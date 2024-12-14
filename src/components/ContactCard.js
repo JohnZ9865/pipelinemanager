@@ -101,26 +101,26 @@ const ContactCard = ({ contact, collection, onStatusChange }) => {
   return (
     <>
       <div 
-        className="bg-white p-2 rounded-lg shadow-sm mb-2 text-xs sm:text-sm hover:bg-gray-50 cursor-pointer border-2"
+        className="bg-gray-800 p-2 rounded-lg shadow-md mb-2 text-xs sm:text-sm hover:bg-gray-700 cursor-pointer border border-gray-700"
         onClick={() => setShowModal(true)}
       >
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
           <div className="grow min-w-0 w-full sm:w-1/3">
-            <div className="font-medium truncate">{contact.company || 'None'}</div>
-            <div className="text-gray-600 truncate">{contact.name || 'None'}</div>
+            <div className="font-medium truncate text-gray-100">{contact.company || 'None'}</div>
+            <div className="text-gray-400 truncate">{contact.name || 'None'}</div>
           </div>
 
           <div className="flex w-full sm:w-auto grow-0 gap-2 items-center" onClick={(e) => e.stopPropagation()}>
             <DatePicker
               selected={localFollowUpDate}
               onChange={handleDateChange}
-              className="shadow appearance-none border rounded w-full py-1 sm:py-2 px-2 sm:px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-6 sm:h-8"
+              className="shadow appearance-none border border-gray-700 rounded w-full py-1 sm:py-2 px-2 sm:px-3 text-gray-100 bg-gray-800 leading-tight focus:outline-none focus:shadow-outline h-6 sm:h-8"
               dateFormat="MMM d"
               minDate={new Date()}
               disabled={isUpdating}
             />
             <select
-              className="border rounded p-1 text-xs bg-white"
+              className="border rounded p-1 text-xs bg-gray-800 text-gray-100 border-gray-700"
               value={collection}
               onChange={(e) => handleStatusChange(e.target.value)}
               disabled={isUpdating}
@@ -137,32 +137,32 @@ const ContactCard = ({ contact, collection, onStatusChange }) => {
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg max-w-lg w-full mx-4">
+          <div className="bg-gray-800 p-6 rounded-lg max-w-lg w-full mx-4 border border-gray-700">
             <div className="flex justify-between items-start mb-4">
-              <h2 className="text-xl font-semibold">Contact Details</h2>
+              <h2 className="text-xl font-semibold text-gray-100">Contact Details</h2>
               <button 
                 onClick={() => setShowModal(false)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-400 hover:text-gray-200"
               >
                 ✕
               </button>
             </div>
             <div className="space-y-3">
               <div>
-                <label className="font-medium">Name:</label>
-                <p>{contact.name || 'None'}</p>
+                <label className="font-medium text-gray-100">Name:</label>
+                <p className="text-gray-300">{contact.name || 'None'}</p>
               </div>
               <div>
-                <label className="font-medium">Company:</label>
-                <p>{contact.company || 'None'}</p>
+                <label className="font-medium text-gray-100">Company:</label>
+                <p className="text-gray-300">{contact.company || 'None'}</p>
               </div>
               <div>
-                <label className="font-medium">Status:</label>
-                <p className="capitalize">{collection}</p>
+                <label className="font-medium text-gray-100">Status:</label>
+                <p className="capitalize text-gray-300">{collection}</p>
               </div>
               <div>
-                <label className="font-medium">Follow-up Date:</label>
-                <p>{formatDate(contact.tofollowup)}</p>
+                <label className="font-medium text-gray-100">Follow-up Date:</label>
+                <p className="text-gray-300">{formatDate(contact.tofollowup)}</p>
               </div>
             </div>
           </div>

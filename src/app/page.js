@@ -63,7 +63,7 @@ function HomePage() {
       <Head>
         <title>Pipeline Dashboard</title>
       </Head>
-      <div className="p-4">
+      <div className="p-4 bg-gray-900">
         <button
           onClick={handleRefresh}
           disabled={isLoading}
