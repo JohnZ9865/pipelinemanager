@@ -75,14 +75,14 @@ const PipelineDashboard = ({ data }) => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-2 sm:p-6">
       {/* First Row */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         {/* Initial Connect Column */}
         <div
-          className="max-h-[50vh] overflow-y-auto bg-gray-50 p-4 rounded-lg"
+          className="max-h-[60vh] md:max-h-[50vh] overflow-y-auto bg-gray-50 p-2 sm:p-4 rounded-lg"
         >
-          <h2 className="text-xl font-bold mb-4">Initial Connect</h2>
+          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">Initial Connect</h2>
           {pipelineData.initialconnect
             ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
             .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
@@ -97,8 +97,8 @@ const PipelineDashboard = ({ data }) => {
         </div>
 
         {/* In Conversation Column */}
-        <div className="max-h-[50vh] overflow-y-auto bg-gray-50 p-4 rounded-lg">
-          <h2 className="text-xl font-bold mb-4">In Conversation</h2>
+        <div className="max-h-[60vh] md:max-h-[50vh] overflow-y-auto bg-gray-50 p-2 sm:p-4 rounded-lg">
+          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">In Conversation</h2>
           {pipelineData.inconvo
             ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
             .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
@@ -115,9 +115,9 @@ const PipelineDashboard = ({ data }) => {
       
         {/* Booked Column */}
         <div
-      className="max-h-[50vh] overflow-y-auto bg-gray-50 p-4 rounded-lg"
+      className="max-h-[60vh] md:max-h-[50vh] overflow-y-auto bg-gray-50 p-2 sm:p-4 rounded-lg"
     >
-          <h2 className="text-xl font-bold mb-4">Calls </h2>
+          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">Calls </h2>
           {pipelineData.booked
             ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
             .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
@@ -135,12 +135,12 @@ const PipelineDashboard = ({ data }) => {
       </div>
 
       {/* Second Row */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Post Call Column */}
         <div
-      className="max-h-[50vh] overflow-y-auto bg-gray-50 p-4 rounded-lg"
+      className="max-h-[60vh] md:max-h-[50vh] overflow-y-auto bg-gray-50 p-2 sm:p-4 rounded-lg"
     >
-          <h2 className="text-xl font-bold mb-4">Post Call</h2>
+          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">Post Call</h2>
           {pipelineData.postcall
         ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
         .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
@@ -155,8 +155,8 @@ const PipelineDashboard = ({ data }) => {
         </div>
 
         {/* Long Term Column */}
-        <div className="bg-gray-50 p-4 rounded-lg">
-          <h2 className="text-xl font-bold mb-4">Long Term</h2>
+        <div className="bg-gray-50 p-2 sm:p-4 rounded-lg">
+          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">Long Term</h2>
           {pipelineData.longterm
             ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
             .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
@@ -172,10 +172,10 @@ const PipelineDashboard = ({ data }) => {
 
         </div>
         
-        <div className='grid grid-cols-3 gap-4'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
 
-        <div className="bg-gray-50 p-4 rounded-lg">
-            <h2 className="text-xl font-bold mb-4">Finished</h2>
+        <div className="bg-gray-50 p-2 sm:p-4 rounded-lg">
+            <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">Finished</h2>
             {pipelineData.finished
               ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
               .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
@@ -190,8 +190,8 @@ const PipelineDashboard = ({ data }) => {
           </div>
 
             {/* Dead Column */}
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <h2 className="text-xl font-bold mb-4">Dead</h2>
+          <div className="bg-gray-50 p-2 sm:p-4 rounded-lg">
+            <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4">Dead</h2>
             {pipelineData.dead
               ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
               .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)

@@ -101,20 +101,20 @@ const ContactCard = ({ contact, collection, onStatusChange }) => {
   return (
     <>
       <div 
-        className="bg-white p-2 rounded-lg shadow-sm mb-2 text-sm hover:bg-gray-50 cursor-pointer"
+        className="bg-white p-2 rounded-lg shadow-sm mb-2 text-xs sm:text-sm hover:bg-gray-50 cursor-pointer border-2"
         onClick={() => setShowModal(true)}
       >
-        <div className="flex justify-between items-center gap-2">
-          <div className="grow min-w-0 w-1/3">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div className="grow min-w-0 w-full sm:w-1/3">
             <div className="font-medium truncate">{contact.company || 'None'}</div>
             <div className="text-gray-600 truncate">{contact.name || 'None'}</div>
           </div>
 
-          <div className="flex grow-0 gap-2 items-center" onClick={(e) => e.stopPropagation()}>
+          <div className="flex w-full sm:w-auto grow-0 gap-2 items-center" onClick={(e) => e.stopPropagation()}>
             <DatePicker
               selected={localFollowUpDate}
               onChange={handleDateChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  h-6"
+              className="shadow appearance-none border rounded w-full py-1 sm:py-2 px-2 sm:px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-6 sm:h-8"
               dateFormat="MMM d"
               minDate={new Date()}
               disabled={isUpdating}
