@@ -1,8 +1,54 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import { collection, addDoc, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../app/firebase/firebaseConfig';
+
+const fetchIPAddress = async () => {
+  try {
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+    return data.ip;
+  } catch (error) {
+    console.error('Error fetching IP address:', error);
+    return null;
+  }
+};
+
+const storeIPAddress = async (ipAddress) => {
+  if (!ipAddress) return;
+  try {
+    const ipDocRef = doc(db, 'user_ips', ipAddress);
+    const ipDoc = await getDoc(ipDocRef);
+
+    if (ipDoc.exists()) {
+      // If the IP already exists, increment the count
+      await updateDoc(ipDocRef, {
+        count: (ipDoc.data().count || 1) + 1,
+      });
+    } else {
+      // If the IP doesn't exist, create a new document with count 1
+      await setDoc(ipDocRef, {
+        ip: ipAddress,
+        count: 1,
+        timestamp: new Date().toISOString(),
+      });
+    }
+  } catch (error) {
+    console.error('Error storing IP address:', error);
+  }
+};
 
 const Navbar = () => {
+  useEffect(() => {
+    const trackUser = async () => {
+      const ipAddress = await fetchIPAddress();
+      await storeIPAddress(ipAddress);
+    };
+    trackUser();
+  }, []);
+
   const pathname = usePathname();
 
   const getLinkClass = (path) => {
