@@ -88,24 +88,26 @@ const PipelineDashboard = ({ data }) => {
           .map((colItem) => (
             <div
               key={colItem.name}
-              className="max-h-[60vh] overflow-y-auto rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 md:max-h-[50vh]"
+              className="max-h-[60vh] relative flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 md:max-h-[50vh]"
             >
-              <h2 className="mb-2 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
+              <h2 className="sticky top-0 z-10 mb-2 bg-gray-800 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
                 {colItem.formalwords}
               </h2>
-              {pipelineData[colItem.name]
-                ?.filter(
-                  (contact) => contact.tofollowup && contact.tofollowup.seconds,
-                )
-                .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
-                .map((contact) => (
-                  <ContactCard
-                    key={contact.id}
-                    contact={contact}
-                    collection={colItem.name}
-                    onStatusChange={handleStatusChange}
-                  />
-                ))}
+              <div className="overflow-y-auto">
+                {pipelineData[colItem.name]
+                  ?.filter(
+                    (contact) => contact.tofollowup && contact.tofollowup.seconds,
+                  )
+                  .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
+                  .map((contact) => (
+                    <ContactCard
+                      key={contact.id}
+                      contact={contact}
+                      collection={colItem.name}
+                      onStatusChange={handleStatusChange}
+                    />
+                  ))}
+              </div>
             </div>
           ))}
       </div>
@@ -117,24 +119,26 @@ const PipelineDashboard = ({ data }) => {
           .map((colItem) => (
             <div
               key={colItem.name}
-              className="max-h-[60vh] overflow-y-auto rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 md:max-h-[50vh]"
+              className="max-h-[60vh] relative flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 md:max-h-[50vh]"
             >
-              <h2 className="mb-2 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
+              <h2 className="sticky top-0 z-10 mb-2 bg-gray-800 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
                 {colItem.formalwords}
               </h2>
-              {pipelineData[colItem.name]
-                ?.filter(
-                  (contact) => contact.tofollowup && contact.tofollowup.seconds,
-                )
-                .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
-                .map((contact) => (
-                  <ContactCard
-                    key={contact.id}
-                    contact={contact}
-                    collection={colItem.name}
-                    onStatusChange={handleStatusChange}
-                  />
-                ))}
+              <div className="overflow-y-auto">
+                {pipelineData[colItem.name]
+                  ?.filter(
+                    (contact) => contact.tofollowup && contact.tofollowup.seconds,
+                  )
+                  .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
+                  .map((contact) => (
+                    <ContactCard
+                      key={contact.id}
+                      contact={contact}
+                      collection={colItem.name}
+                      onStatusChange={handleStatusChange}
+                    />
+                  ))}
+              </div>
             </div>
           ))}
       </div>
@@ -146,24 +150,26 @@ const PipelineDashboard = ({ data }) => {
           .map((colItem) => (
             <div
               key={colItem.name}
-              className="max-h-[60vh] overflow-y-auto rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 md:max-h-[50vh]"
+              className="max-h-[60vh] relative flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 md:max-h-[50vh]"
             >
-              <h2 className="mb-2 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
+              <h2 className="sticky top-0 z-10 mb-2 bg-gray-800 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
                 {colItem.formalwords}
               </h2>
-              {pipelineData[colItem.name]
-                ?.filter(
-                  (contact) => contact.tofollowup && contact.tofollowup.seconds,
-                )
-                .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
-                .map((contact) => (
-                  <ContactCard
-                    key={contact.id}
-                    contact={contact}
-                    collection={colItem.name}
-                    onStatusChange={handleStatusChange}
-                  />
-                ))}
+              <div className="overflow-y-auto">
+                {pipelineData[colItem.name]
+                  ?.filter(
+                    (contact) => contact.tofollowup && contact.tofollowup.seconds,
+                  )
+                  .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
+                  .map((contact) => (
+                    <ContactCard
+                      key={contact.id}
+                      contact={contact}
+                      collection={colItem.name}
+                      onStatusChange={handleStatusChange}
+                    />
+                  ))}
+              </div>
             </div>
           ))}
       </div>
