@@ -85,23 +85,10 @@ function HomePage() {
           >
             Add New Contact
           </button>
-          <div className="flex items-center gap-2">
-            <label className="relative inline-flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                className="sr-only peer"
-                checked={isExtendedView}
-                onChange={() => setIsExtendedView(!isExtendedView)}
-              />
-              <div className="w-11 h-6 bg-purple-500 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
-              <span className="ms-3 text-sm font-medium text-white">
-                {isExtendedView ? "Extended" : "Compact"}
-              </span>
-            </label>
-          </div>
+          
         </div>
       </div>
-      {retrievedData && <PipelineDashboard data={retrievedData} isExtendedView={isExtendedView} />}
+      {retrievedData && <PipelineDashboard data={retrievedData} />}
       <AddUserModal isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)} />
     </div>
   );
