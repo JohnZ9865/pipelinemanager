@@ -81,6 +81,7 @@ const PipelineDashboard = ({ data }) => {
 
   return (
     <div className="bg-gray-900 p-2 sm:p-6">
+      {/* First Row */}
       <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {columnObjects
           .filter((colItem) => colItem.row === 1) // Filter only items where row === 1
@@ -110,87 +111,61 @@ const PipelineDashboard = ({ data }) => {
       </div>
 
       {/* Second Row */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {/* Post Call Column */}
-        <div className="max-h-[60vh] overflow-y-auto rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 md:max-h-[50vh]">
-          <h2 className="mb-2 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
-            Post Call
-          </h2>
-          {pipelineData.postcall
-            ?.filter(
-              (contact) => contact.tofollowup && contact.tofollowup.seconds,
-            )
-            .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
-            .map((contact) => (
-              <ContactCard
-                key={contact.id}
-                contact={contact}
-                collection="postcall"
-                onStatusChange={handleStatusChange}
-              />
-            ))}
-        </div>
-
-        {/* Long Term Column */}
-        <div className="rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4">
-          <h2 className="mb-2 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
-            Long Term
-          </h2>
-          {pipelineData.longterm
-            ?.filter(
-              (contact) => contact.tofollowup && contact.tofollowup.seconds,
-            )
-            .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
-            .map((contact) => (
-              <ContactCard
-                key={contact.id}
-                contact={contact}
-                collection="longterm"
-                onStatusChange={handleStatusChange}
-              />
-            ))}
-        </div>
+      <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {columnObjects
+          .filter((colItem) => colItem.row === 2) // Filter only items where row === 2
+          .map((colItem) => (
+            <div
+              key={colItem.name}
+              className="max-h-[60vh] overflow-y-auto rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 md:max-h-[50vh]"
+            >
+              <h2 className="mb-2 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
+                {colItem.formalwords}
+              </h2>
+              {pipelineData[colItem.name]
+                ?.filter(
+                  (contact) => contact.tofollowup && contact.tofollowup.seconds,
+                )
+                .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
+                .map((contact) => (
+                  <ContactCard
+                    key={contact.id}
+                    contact={contact}
+                    collection={colItem.name}
+                    onStatusChange={handleStatusChange}
+                  />
+                ))}
+            </div>
+          ))}
       </div>
 
-      <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div className="rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4">
-          <h2 className="mb-2 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
-            Finished
-          </h2>
-          {pipelineData.finished
-            ?.filter(
-              (contact) => contact.tofollowup && contact.tofollowup.seconds,
-            )
-            .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
-            .map((contact) => (
-              <ContactCard
-                key={contact.id}
-                contact={contact}
-                collection="finished"
-                onStatusChange={handleStatusChange}
-              />
-            ))}
-        </div>
-
-        {/* Dead Column */}
-        <div className="rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4">
-          <h2 className="mb-2 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
-            Dead
-          </h2>
-          {pipelineData.dead
-            ?.filter(
-              (contact) => contact.tofollowup && contact.tofollowup.seconds,
-            )
-            .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
-            .map((contact) => (
-              <ContactCard
-                key={contact.id}
-                contact={contact}
-                collection="dead"
-                onStatusChange={handleStatusChange}
-              />
-            ))}
-        </div>
+      {/* Third Row */}
+      <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {columnObjects
+          .filter((colItem) => colItem.row === 3) // Filter only items where row === 3
+          .map((colItem) => (
+            <div
+              key={colItem.name}
+              className="max-h-[60vh] overflow-y-auto rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 md:max-h-[50vh]"
+            >
+              <h2 className="mb-2 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">
+                {colItem.formalwords}
+              </h2>
+              {pipelineData[colItem.name]
+                ?.filter(
+                  (contact) => contact.tofollowup && contact.tofollowup.seconds,
+                )
+                .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
+                .map((contact) => (
+                  <ContactCard
+                    key={contact.id}
+                    contact={contact}
+                    collection={colItem.name}
+                    onStatusChange={handleStatusChange}
+                  />
+                ))}
+            </div>
+          ))}
       </div>
 
       {/* Add User Button */}
