@@ -92,8 +92,8 @@ const PipelineDashboard = ({ data, isExtendedView }) => {
             .map((colItem) => (
               <div
                 key={colItem.name}
-                className={`max-h-[60vh] relative flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 ${
-                  isExtendedView ? "md:max-h-[280vh]" : "md:max-h-[60vh]"
+                className={`relative flex flex-col overflow-hidden rounded-lg border border-gray-700 bg-gray-800 p-2 shadow-md sm:p-4 ${
+                  isExtendedView ? "max-h-[280vh]" : "max-h-[60vh]"
                 }`}
               >
                 <h2 className="sticky top-0 z-10 mb-2 bg-gray-800 text-lg font-bold text-gray-100 sm:mb-4 sm:text-xl">

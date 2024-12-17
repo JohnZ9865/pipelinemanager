@@ -70,31 +70,35 @@ function HomePage() {
       <Head>
         <title>Pipeline Dashboard</title>
       </Head>
-      <div className="bg-gray-900 p-4">
+      <div className="bg-gray-900 p-4 pb-8">
         <div className="flex items-center gap-4">
           <button
             onClick={handleRefresh}
             disabled={isLoading}
-            className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
+            className="rounded bg-blue-500 px-3 py-1.5 text-white hover:bg-blue-600 disabled:bg-blue-300"
           >
             {isLoading ? "Refreshing..." : "Refresh Data"}
           </button>
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+            className="rounded bg-green-500 px-3 py-1.5 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
           >
             Add New Contact
           </button>
-          <button
-            onClick={() => setIsExtendedView(!isExtendedView)}
-            className={`rounded px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
-              isExtendedView 
-                ? "bg-yellow-500 hover:bg-yellow-600 focus:ring-yellow-500"
-                : "bg-purple-500 hover:bg-purple-600 focus:ring-purple-500"
-            }`}
-          >
-            {isExtendedView ? "Compact View" : "Extended View"}
-          </button>
+          <div className="flex items-center gap-2">
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                className="sr-only peer"
+                checked={isExtendedView}
+                onChange={() => setIsExtendedView(!isExtendedView)}
+              />
+              <div className="w-11 h-6 bg-purple-500 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
+              <span className="ms-3 text-sm font-medium text-white">
+                {isExtendedView ? "Extended" : "Compact"}
+              </span>
+            </label>
+          </div>
         </div>
       </div>
       {retrievedData && <PipelineDashboard data={retrievedData} isExtendedView={isExtendedView} />}
