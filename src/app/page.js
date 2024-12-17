@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import PipelineDashboard from "../components/PipelineDashboard";
 import Login from "../components/Login";
+import AddUserModal from "../components/AddUserModal";
 import {
   fetchAllCollections,
   forceRefreshData,
@@ -14,6 +15,8 @@ import { AuthContextProvider } from "./context/AuthContext";
 function HomePage() {
   const [retrievedData, setRetrievedData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isExtendedView, setIsExtendedView] = useState(false);
   const { user } = useAuth();
 
   const handleDataUpdate = (newData) => {
@@ -68,15 +71,34 @@ function HomePage() {
         <title>Pipeline Dashboard</title>
       </Head>
       <div className="bg-gray-900 p-4">
-        <button
-          onClick={handleRefresh}
-          disabled={isLoading}
-          className="mb-4 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
-        >
-          {isLoading ? "Refreshing..." : "Refresh Data"}
-        </button>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={handleRefresh}
+            disabled={isLoading}
+            className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
+          >
+            {isLoading ? "Refreshing..." : "Refresh Data"}
+          </button>
+          <button
+            onClick={() => setIsAddModalOpen(true)}
+            className="rounded bg-green-500 px-4 py-2 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+          >
+            Add New Contact
+          </button>
+          <button
+            onClick={() => setIsExtendedView(!isExtendedView)}
+            className={`rounded px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+              isExtendedView 
+                ? "bg-yellow-500 hover:bg-yellow-600 focus:ring-yellow-500"
+                : "bg-purple-500 hover:bg-purple-600 focus:ring-purple-500"
+            }`}
+          >
+            {isExtendedView ? "Compact View" : "Extended View"}
+          </button>
+        </div>
       </div>
-      {retrievedData && <PipelineDashboard data={retrievedData} />}
+      {retrievedData && <PipelineDashboard data={retrievedData} isExtendedView={isExtendedView} />}
+      <AddUserModal isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)} />
     </div>
   );
 }
