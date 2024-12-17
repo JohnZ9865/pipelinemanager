@@ -7,7 +7,12 @@ interface ColumnProps {
   onSearch: (query: string) => void;
 }
 
-const Column: React.FC<ColumnProps> = ({ title, items, onAddItem, onSearch }) => {
+const Column: React.FC<ColumnProps> = ({
+  title,
+  items,
+  onAddItem,
+  onSearch,
+}) => {
   const [newItem, setNewItem] = useState("");
 
   const handleAdd = () => {
@@ -18,24 +23,22 @@ const Column: React.FC<ColumnProps> = ({ title, items, onAddItem, onSearch }) =>
   };
 
   return (
-    <div className="bg-gray-100 p-4 rounded-lg shadow-md w-full md:w-1/4">
+    <div className="w-full rounded-lg bg-gray-100 p-4 shadow-md md:w-1/4">
       <h2 className="text-lg font-semibold">{title}</h2>
       <input
         type="text"
         placeholder="Search items..."
         onChange={(e) => onSearch(e.target.value)}
-        className="border border-gray-300 rounded px-2 py-1 my-1 w-full"
+        className="my-1 w-full rounded border border-gray-300 px-2 py-1"
       />
 
-
-      <ul className="space-y-2 mt-2">
+      <ul className="mt-2 space-y-2">
         {items.map((item, index) => (
-          <li key={index} className="bg-white p-2 rounded shadow">
+          <li key={index} className="rounded bg-white p-2 shadow">
             {item}
           </li>
         ))}
       </ul>
-
     </div>
   );
 };

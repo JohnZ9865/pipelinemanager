@@ -1,14 +1,14 @@
-'use client';
-import { useState } from 'react';
-import { useAuth } from '../app/context/AuthContext';
+"use client";
+import { useState } from "react";
+import { useAuth } from "../app/context/AuthContext";
 
 export default function Login() {
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { login } = useAuth();
 
   const handleLogin = async () => {
     try {
-      setError('');
+      setError("");
       await login();
     } catch (err) {
       setError(err.message);
@@ -16,8 +16,8 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign in with Google
@@ -25,13 +25,16 @@ export default function Login() {
         </div>
         <div>
           {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <div
+              className="relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700"
+              role="alert"
+            >
               <span className="block sm:inline">{error}</span>
             </div>
           )}
           <button
             onClick={handleLogin}
-            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             Sign in with Google
           </button>

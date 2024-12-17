@@ -1,11 +1,15 @@
 "use client";
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import PipelineDashboard from '../components/PipelineDashboard';
-import Login from '../components/Login';
-import { fetchAllCollections, forceRefreshData, setupRealtimeSync } from './firebase/firebasefunctions';
-import { useAuth } from './context/AuthContext';
-import { AuthContextProvider } from './context/AuthContext';
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import PipelineDashboard from "../components/PipelineDashboard";
+import Login from "../components/Login";
+import {
+  fetchAllCollections,
+  forceRefreshData,
+  setupRealtimeSync,
+} from "./firebase/firebasefunctions";
+import { useAuth } from "./context/AuthContext";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function HomePage() {
   const [retrievedData, setRetrievedData] = useState(null);
@@ -63,13 +67,13 @@ function HomePage() {
       <Head>
         <title>Pipeline Dashboard</title>
       </Head>
-      <div className="p-4 bg-gray-900">
+      <div className="bg-gray-900 p-4">
         <button
           onClick={handleRefresh}
           disabled={isLoading}
-          className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-blue-300"
+          className="mb-4 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
         >
-          {isLoading ? 'Refreshing...' : 'Refresh Data'}
+          {isLoading ? "Refreshing..." : "Refresh Data"}
         </button>
       </div>
       {retrievedData && <PipelineDashboard data={retrievedData} />}

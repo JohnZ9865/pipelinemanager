@@ -1,17 +1,24 @@
-'use client';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
-import { collection, addDoc, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
-import { db } from '../app/firebase/firebaseConfig';
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import {
+  collection,
+  addDoc,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
+import { db } from "../app/firebase/firebaseConfig";
 
 const fetchIPAddress = async () => {
   try {
-    const response = await fetch('https://api.ipify.org?format=json');
+    const response = await fetch("https://api.ipify.org?format=json");
     const data = await response.json();
     return data.ip;
   } catch (error) {
-    console.error('Error fetching IP address:', error);
+    console.error("Error fetching IP address:", error);
     return null;
   }
 };
@@ -19,7 +26,7 @@ const fetchIPAddress = async () => {
 const storeIPAddress = async (ipAddress) => {
   if (!ipAddress) return;
   try {
-    const ipDocRef = doc(db, 'user_ips', ipAddress);
+    const ipDocRef = doc(db, "user_ips", ipAddress);
     const ipDoc = await getDoc(ipDocRef);
 
     if (ipDoc.exists()) {
@@ -36,7 +43,7 @@ const storeIPAddress = async (ipAddress) => {
       });
     }
   } catch (error) {
-    console.error('Error storing IP address:', error);
+    console.error("Error storing IP address:", error);
   }
 };
 
@@ -54,17 +61,17 @@ const Navbar = () => {
   const getLinkClass = (path) => {
     return `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
       pathname === path
-        ? 'border-blue-500 text-blue-400'
-        : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700'
+        ? "border-blue-500 text-blue-400"
+        : "border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700"
     }`;
   };
 
   return (
-    <nav className="bg-gray-900 border-b border-gray-800 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between h-16">
+    <nav className="border-b border-gray-800 bg-gray-900 shadow-lg">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="flex h-16 justify-between">
           <div className="flex space-x-8">
-            <Link href="/" className={getLinkClass('/')}>
+            <Link href="/" className={getLinkClass("/")}>
               Pipeline
             </Link>
             {/* <Link href="/finished" className={getLinkClass('/finished')}>

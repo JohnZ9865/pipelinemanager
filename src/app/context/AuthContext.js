@@ -1,7 +1,7 @@
-'use client';
-import { createContext, useContext, useEffect, useState } from 'react';
-import { auth } from '../firebase/firebaseConfig';
-import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+"use client";
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth } from "../firebase/firebaseConfig";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
 const AuthContext = createContext({});
 
@@ -28,13 +28,13 @@ export const AuthContextProvider = ({ children }) => {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      const allowedEmails = ['zhou9865@gmail.com', 'szhou110@ucr.edu'];
-      
+      const allowedEmails = ["zhou9865@gmail.com", "szhou110@ucr.edu"];
+
       if (!allowedEmails.includes(result.user.email)) {
         await signOut(auth);
-        throw new Error('Email not authorized');
+        throw new Error("Email not authorized");
       }
-      
+
       return result;
     } catch (error) {
       throw error;
