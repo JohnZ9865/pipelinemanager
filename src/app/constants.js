@@ -18,6 +18,8 @@ const formalwords = new Map([
   ["finished", "Finished"],
 ]);
 
+const totalRows = 3;
+
 // const row1 = ['initialconnect', 'inconvo', 'Booked Calls'];
 // const row2 = ['Post Call', 'Long Term'];
 // const row3 = ['Finished', 'Dead'];
@@ -32,4 +34,4 @@ const columnObjects = [
   { name: "finished", formalwords: "Finished", row: 3 },
 ];
 
-export { collectionNames, formalwords, columnObjects };
+export { collectionNames, formalwords, columnObjects, totalRows };
