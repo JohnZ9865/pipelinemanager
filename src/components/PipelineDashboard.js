@@ -5,6 +5,7 @@ import AddUserModal from './AddUserModal';
 import { doc, deleteDoc, setDoc } from 'firebase/firestore';
 import { db } from '../app/firebase/firebaseConfig';
 import { updateCache } from '../app/firebase/firebasefunctions';
+import { collectionNames, formalwords, columnObjects } from '../app/constants';
 
 const PipelineDashboard = ({ data }) => {
   const [pipelineData, setPipelineData] = useState({
@@ -76,60 +77,31 @@ const PipelineDashboard = ({ data }) => {
 
   return (
     <div className="p-2 sm:p-6 bg-gray-900">
-      {/* First Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-        {/* Initial Connect Column */}
-        <div
-          className="max-h-[60vh] md:max-h-[50vh] overflow-y-auto bg-gray-800 p-2 sm:p-4 rounded-lg shadow-md border border-gray-700"
-        >
-          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4 text-gray-100">Initial Connect</h2>
-          {pipelineData.initialconnect
-            ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
-            .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
-            .map(contact => (
-              <ContactCard
-                key={contact.id}
-                contact={contact}
-                collection="initialconnect"
-                onStatusChange={handleStatusChange}
-              />
-            ))}
-        </div>
-
-        {/* In Conversation Column */}
-        <div className="max-h-[60vh] md:max-h-[50vh] overflow-y-auto bg-gray-800 p-2 sm:p-4 rounded-lg shadow-md border border-gray-700">
-          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4 text-gray-100">In Conversation</h2>
-          {pipelineData.inconvo
-            ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
-            .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
-            .map(contact => (
-              <ContactCard
-                key={contact.id}
-                contact={contact}
-                collection="inconvo"
-                onStatusChange={handleStatusChange}
-              />
-            ))}
-        </div>
-          
-      
-        {/* Booked Column */}
-        <div
+      {columnObjects
+  .filter(colItem => colItem.row === 1) // Filter only items where row === 1
+  .map(colItem => (
+    <div
+      key={colItem.name}
       className="max-h-[60vh] md:max-h-[50vh] overflow-y-auto bg-gray-800 p-2 sm:p-4 rounded-lg shadow-md border border-gray-700"
     >
-          <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4 text-gray-100">Calls </h2>
-          {pipelineData.booked
-            ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
-            .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
-            .map(contact => (
-              <ContactCard
-                key={contact.id}
-                contact={contact}
-                collection="booked"
-                onStatusChange={handleStatusChange}
-              />
-            ))}
-        </div>
+      <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4 text-gray-100">
+        {colItem.formalwords}
+      </h2>
+      {pipelineData[colItem.name]
+        ?.filter(contact => contact.tofollowup && contact.tofollowup.seconds)
+        .sort((a, b) => a.tofollowup.seconds - b.tofollowup.seconds)
+        .map(contact => (
+          <ContactCard
+            key={contact.id}
+            contact={contact}
+            collection={colItem.name}
+            onStatusChange={handleStatusChange}
+          />
+        ))}
+    </div>
+  ))}
+
 
 
       </div>
