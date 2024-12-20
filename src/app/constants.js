@@ -6,6 +6,7 @@ const collectionNames = [
   "longterm",
   "dead",
   "finished",
+  "excess"
 ];
 
 const formalwords = new Map([
@@ -16,6 +17,7 @@ const formalwords = new Map([
   ["longterm", "Long Term"],
   ["dead", "Dead"],
   ["finished", "Finished"],
+  ["excess", "Excess"]
 ]);
 
 const totalRows = 3;
@@ -32,6 +34,7 @@ const columnObjects = [
   { name: "longterm", formalwords: "Long Term", row: 2 },
   { name: "dead", formalwords: "Dead", row: 3 },
   { name: "finished", formalwords: "Finished", row: 3 },
+  { name: "excess", formalwords: "Excess", row: 3 },
 ];
 
 export { collectionNames, formalwords, columnObjects, totalRows };
