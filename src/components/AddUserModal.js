@@ -40,7 +40,9 @@ const AddUserModal = ({ isOpen, onClose }) => {
         <h2 className="mb-4 text-xl font-bold text-white">Add New Contact</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="mb-2 block text-sm font-semibold text-gray-200">Name</label>
+            <label className="mb-2 block text-sm font-semibold text-gray-200">
+              Name
+            </label>
             <input
               type="text"
               value={name}
@@ -50,7 +52,9 @@ const AddUserModal = ({ isOpen, onClose }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="mb-2 block text-sm font-semibold text-gray-200">Company</label>
+            <label className="mb-2 block text-sm font-semibold text-gray-200">
+              Company
+            </label>
             <input
               type="text"
               value={company}
@@ -60,7 +64,9 @@ const AddUserModal = ({ isOpen, onClose }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="mb-2 block text-sm font-semibold text-gray-200">Follow-up Date</label>
+            <label className="mb-2 block text-sm font-semibold text-gray-200">
+              Follow-up Date
+            </label>
             <DatePicker
               selected={followUpDate}
               onChange={(date) => setFollowUpDate(date)}
@@ -70,7 +76,9 @@ const AddUserModal = ({ isOpen, onClose }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="mb-2 block text-sm font-semibold text-gray-200">Initial Status</label>
+            <label className="mb-2 block text-sm font-semibold text-gray-200">
+              Initial Status
+            </label>
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}

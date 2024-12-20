@@ -85,11 +85,13 @@ function HomePage() {
           >
             Add New Contact
           </button>
-          
         </div>
       </div>
       {retrievedData && <PipelineDashboard data={retrievedData} />}
-      <AddUserModal isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)} />
+      <AddUserModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+      />
     </div>
   );
 }
