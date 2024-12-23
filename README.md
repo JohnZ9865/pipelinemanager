@@ -79,6 +79,3 @@ The application can be easily deployed using Vercel:
 3. Add your environment variables in the Vercel project settings
 4. Deploy!
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
