@@ -6,7 +6,7 @@ const collectionNames = [
   "longterm",
   "dead",
   "finished",
-  "excess"
+  "excess",
 ];
 
 const formalwords = new Map([
@@ -17,7 +17,7 @@ const formalwords = new Map([
   ["longterm", "Long Term"],
   ["dead", "Dead"],
   ["finished", "Finished"],
-  ["excess", "Excess"]
+  ["excess", "Excess"],
 ]);
 
 const totalRows = 3;

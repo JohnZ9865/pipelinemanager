@@ -28,8 +28,7 @@ export const AuthContextProvider = ({ children }) => {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      const allowedEmails = ["zhou9865@gmail.com", "szhou110@ucr.edu"];
-
+      const allowedEmails = process.env.NEXT_PUBLIC_EMAILList.split(",");
       if (!allowedEmails.includes(result.user.email)) {
         await signOut(auth);
         throw new Error("Email not authorized");
