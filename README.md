@@ -38,11 +38,7 @@ A modern, personal CRM built with Next.js, React, and Firebase, featuring a Kanb
 
 ### Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/kaban.git
-cd kaban
-```
+1. Clone the repository
 
 2. Install dependencies:
 ```bash
